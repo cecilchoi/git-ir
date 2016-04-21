@@ -38,6 +38,7 @@ git.pullChanged()
   .then(pass, fail);
 ```
 
+##### Command line
 ```bash
 git-ir -s HOSTNAME -r GIT/REPO/PATH -u USERNAME -p PASSWORD GITCOMMAND
 // or

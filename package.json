@@ -9,7 +9,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords" : ["git", "Windows"],
+  "keywords": [
+    "git",
+    "Windows"
+  ],
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -19,7 +22,6 @@
     "bluebird": "^3.3.5",
     "commander": "^2.9.0",
     "path": "^0.12.7",
-    "promise": "^7.1.1",
     "winexe": "^0.2.2"
   },
   "author": "Cecil Choi"
