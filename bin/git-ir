@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+
+var program = require('commander');
+var gitIr = require('..');
+
+var command;
+
+program
+  .option('-r, --repo <value>', 'git repo path')
+  .option('-s, --host <value>', 'remote server hostname')
+  .option('-m, --method <value>', 'git-ir-done command')
+  .option('-u, --username <value>', 'username')
+  .option('-p, --password <value>', 'password');
+
+var argv = getGlobalArgs(process.argv);
+
+program
+  .command('*')
+  .action(function(cmd) {
+    command = cmd
+  });
+
+program
+  .parse(argv);
+
+if (program.method) {
+  var gitIrDone = new gitIr.Done(program);
+  if (typeof gitIrDone[program.method] === 'function') {
+    gitIrDone[program.method](command)
+      .then(console.log, console.error);
+  }
+  else {
+    console.error('git-ir-done command does not exist: '+program.method);
+  }
+}
+else if (command) {
+  gitIr(command, program)
+    .then(print, print);
+}
+
+function print(data) {
+  data.forEach(function(line) {
+    console.log(line);
+  });
+}
+
+function getGlobalArgs() {
+  var argv = process.argv.slice(0,2);
+
+  var command;
+  for (var i=2; i<process.argv.length; i++) {
+    var arg = process.argv[i];
+    if (command) {
+      command += ' '+arg;
+    }
+    else if (program.optionFor(arg)) {
+      argv.push(arg);
+      argv.push(process.argv[++i]);
+    }
+    else {
+      command = arg;
+    }
+  }
+  if (command) {
+    argv.push(command);
+  }
+  return argv;
+}
