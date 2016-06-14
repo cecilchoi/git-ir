@@ -47,11 +47,17 @@ git-ir -s HOSTNAME -r GIT/REPO/PATH -u USERNAME -p PASSWORD -m GITIRDONE.METHOD
 
 #### Git-Ir-Done methods
 All methods return a Promise(Bluebird for now).
+- run(command)
+  - run git command
 - pullChanged
   - pull changed files and return list of files updated
 - getCurrentBranch
-- reset(commit)
+- setBranch
+- reset(params)
+- resetToCommit(commit)
   - hard reset to commit number
+- resetToBranch(branch)
+  - hard reset to origin/branch
 - fetch
 - getChangedFiles(branch)
   - diff branch to origin
