@@ -49,18 +49,18 @@ git-ir -s HOSTNAME -r GIT/REPO/PATH -u USERNAME -p PASSWORD -m GITIRDONE.METHOD
 All methods return a Promise(Bluebird for now).
 - run(command)
   - run git command
-- pullChanged
-  - pull changed files and return list of files updated
+- syncLoop(data)
+  - sync repo to latest commit
+    - keep passing in the same object until it returns complete.
 - getCurrentBranch
-- setBranch
-- reset(params)
-- resetToCommit(commit)
+- setBranch(branch)
+- reset(commit)
   - hard reset to commit number
-- resetToBranch(branch)
-  - hard reset to origin/branch
 - fetch
 - getChangedFiles(branch)
   - diff branch to origin
+- getModifiedFiles
+  - modified files not commited
 - pull
 - getLastCommonCommit(branch)
   - find the last commit in common with origin

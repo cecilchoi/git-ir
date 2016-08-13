@@ -1,6 +1,6 @@
 {
   "name": "git-ir",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "Git InfraRed (like a remote)",
   "main": "index.js",
   "bin": {
@@ -21,6 +21,7 @@
   "dependencies": {
     "bluebird": "^3.3.5",
     "commander": "^2.9.0",
+    "lodash": "^4.13.1",
     "path": "^0.12.7",
     "winexe": "^0.2.2"
   },
